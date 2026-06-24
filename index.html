@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LCD图纸审核系统 - 多人协作版</title>
+    <title>LCD图纸审核系统</title>
     <!-- Font Awesome & Google Font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -69,11 +69,6 @@
             font-weight: 600;
         }
 
-        .card-header .badge.warning {
-            background: #fef3c7;
-            color: #b45309;
-        }
-
         .card-header .badge.danger {
             background: #fee2e2;
             color: #b91c1c;
@@ -84,75 +79,9 @@
             color: #15803d;
         }
 
-        /* ===== 用户栏 ===== */
-        .user-bar {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            padding: 12px 20px;
-            background: #f8fafc;
-            border-radius: 14px;
-            border: 1px solid #eef2f6;
-        }
-
-        .user-bar .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-bar .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .user-bar .user-name {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .user-bar .user-role {
-            font-size: 12px;
-            color: #64748b;
-        }
-
-        .user-bar .user-selector {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-left: auto;
-        }
-
-        .user-bar .user-selector button {
-            padding: 4px 16px;
-            border-radius: 40px;
-            border: 1.5px solid #e2e8f0;
-            background: white;
-            font-size: 12px;
-            font-weight: 500;
-            color: #64748b;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .user-bar .user-selector button:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-
-        .user-bar .user-selector button.active {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
+        .card-header .badge.warning {
+            background: #fef3c7;
+            color: #b45309;
         }
 
         /* ===== PDF上传 ===== */
@@ -272,24 +201,9 @@
             background: #fecaca;
         }
 
-        .btn-success {
-            background: #dcfce7;
-            color: #15803d;
-            border: 1.5px solid #bbf7d0;
-        }
-
-        .btn-success:hover {
-            background: #bbf7d0;
-        }
-
         .btn-sm {
             padding: 4px 12px;
             font-size: 12px;
-        }
-
-        .btn-xs {
-            padding: 2px 10px;
-            font-size: 11px;
         }
 
         .pdf-preview {
@@ -310,12 +224,6 @@
         .pdf-preview span {
             font-weight: 500;
             font-size: 14px;
-        }
-
-        .pdf-preview .uploader-tag {
-            font-size: 11px;
-            color: #64748b;
-            font-weight: 400;
         }
 
         /* ===== 审核内容 ===== */
@@ -467,15 +375,15 @@
             margin-top: 5px;
         }
 
-        /* ===== 不符合项 ===== */
-        .nonconformance-table {
+        /* ===== 差异项 ===== */
+        .diff-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
             margin-top: 4px;
         }
 
-        .nonconformance-table th {
+        .diff-table th {
             text-align: left;
             padding: 14px 12px 10px 12px;
             font-weight: 600;
@@ -484,21 +392,36 @@
             background: #fafcff;
         }
 
-        .nonconformance-table td {
+        .diff-table td {
             padding: 14px 12px;
             border-bottom: 1px solid #f1f5f9;
             vertical-align: top;
         }
 
-        .nonconformance-table .col-seq {
-            width: 60px;
+        .diff-table .col-seq {
+            width: 50px;
             color: #64748b;
             font-weight: 500;
         }
 
-        .nonconformance-table .col-category {
-            width: 140px;
+        .diff-table .col-module {
+            width: 120px;
             font-weight: 500;
+        }
+
+        .diff-table .col-item {
+            width: 180px;
+            font-weight: 500;
+        }
+
+        .diff-table .col-benchmark {
+            width: 200px;
+            color: #1e293b;
+        }
+
+        .diff-table .col-input {
+            width: 200px;
+            color: #1e293b;
         }
 
         .tag {
@@ -512,14 +435,9 @@
             letter-spacing: 0.3px;
         }
 
-        .tag-issue {
+        .tag-diff {
             background: #fee2e2;
             color: #b91c1c;
-        }
-
-        .tag-pass {
-            background: #dcfce7;
-            color: #15803d;
         }
 
         .empty-state {
@@ -794,67 +712,20 @@
             justify-content: flex-end;
         }
 
-        /* ===== 文件列表 ===== */
-        .file-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .file-list-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 16px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border: 1px solid #eef2f6;
-        }
-
-        .file-list-item .file-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .file-list-item .file-info i {
-            color: #dc2626;
-            font-size: 18px;
-        }
-
-        .file-list-item .file-info .fname {
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .file-list-item .file-info .fmeta {
-            font-size: 12px;
-            color: #64748b;
-        }
-
-        .file-list-item .file-actions {
-            display: flex;
-            gap: 8px;
-        }
-
         .mt-3 { margin-top: 18px; }
         .mb-1 { margin-bottom: 4px; }
-        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .gap-2 { gap: 8px; }
-        .text-muted { color: #64748b; font-size: 13px; }
 
         @media (max-width: 700px) {
             .card { padding: 16px; }
             .upload-zone { flex-direction: column; align-items: stretch; }
             .audit-grid { grid-template-columns: 1fr 1fr; }
             .modal .item-row { grid-template-columns: 1fr; gap: 8px; }
-            .nonconformance-table { font-size: 13px; }
+            .diff-table { font-size: 13px; }
+            .diff-table th, .diff-table td { padding: 10px 8px; }
             .compare-table { font-size: 12px; }
-            .user-bar { flex-direction: column; align-items: stretch; }
-            .user-bar .user-selector { margin-left: 0; }
+            .compare-table th, .compare-table td { padding: 8px 6px; }
+            .diff-table .col-benchmark { width: 100px; }
+            .diff-table .col-input { width: 100px; }
         }
     </style>
 </head>
@@ -862,65 +733,42 @@
 
 <div class="app-container">
 
-    <!-- ===== 用户栏 ===== -->
-    <div class="card">
-        <div class="user-bar">
-            <div class="user-info">
-                <div class="user-avatar" id="currentUserAvatar">A</div>
-                <div>
-                    <div class="user-name" id="currentUserName">Alice</div>
-                    <div class="user-role" id="currentUserRole">审核员</div>
-                </div>
-            </div>
-            <div class="user-selector">
-                <button class="active" data-user="alice" onclick="switchUser('alice')">👩 Alice</button>
-                <button data-user="bob" onclick="switchUser('bob')">👨 Bob</button>
-                <button data-user="carol" onclick="switchUser('carol')">👩 Carol</button>
-                <button data-user="david" onclick="switchUser('david')">👨 David</button>
-            </div>
-            <div style="font-size:12px; color:#94a3b8; margin-left:auto;">
-                <i class="fas fa-users"></i> <span id="onlineCount">4</span> 人在线
-            </div>
-        </div>
-    </div>
-
     <!-- ===== 第一部分：图纸输入 ===== -->
     <div class="card">
         <div class="card-header">
             <i class="fas fa-file-pdf"></i>
             <h2>图纸输入窗口 (PDF)</h2>
             <span class="badge">支持 .pdf</span>
-            <span class="badge success" id="fileCountBadge">0 个文件</span>
+            <span class="badge success" id="fileStatusBadge">未加载</span>
         </div>
 
-        <!-- 上传区域 -->
         <div class="upload-zone">
             <div class="upload-area" id="pdfUploadArea" onclick="document.getElementById('pdfInput').click()">
                 <i class="fas fa-cloud-upload-alt"></i>
                 <div class="file-info">
                     <span class="file-name" id="pdfFileName">点击或拖拽上传 PDF</span>
-                    <span class="file-hint">支持 CC2 6.808 系列图纸 · 多人共享</span>
+                    <span class="file-hint">支持 CC2 6.808 系列图纸</span>
                 </div>
                 <span class="progress-text" id="progressText"></span>
                 <div class="upload-progress" id="uploadProgress"></div>
                 <input type="file" id="pdfInput" accept=".pdf" style="display:none" onchange="handlePDFUpload(event)">
             </div>
-        </div>
-
-        <!-- 已上传文件列表 -->
-        <div class="file-list" id="fileList">
-            <div class="empty-state" style="padding:16px 0;">
-                <i class="fas fa-inbox" style="font-size:24px;"></i>
-                <p style="font-size:13px;">暂无文件，上传第一个PDF开始审核</p>
+            <div class="pdf-preview" id="pdfPreview" style="display: none;">
+                <i class="fas fa-file-pdf"></i>
+                <span id="pdfPreviewName">document.pdf</span>
+                <button class="btn btn-danger" style="padding:4px 12px; font-size:12px;" onclick="clearPDF()"><i class="fas fa-times"></i></button>
             </div>
+        </div>
+        <div style="margin-top: 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 8px 16px; border-radius: 30px; display: inline-block;">
+            <i class="fas fa-info-circle"></i> 当前图纸: <span id="currentDocStatus">未加载</span>
         </div>
     </div>
 
-    <!-- ===== 第二部分：审核内容 ===== -->
+    <!-- ===== 第二部分：审核内容（基准库） ===== -->
     <div class="card">
         <div class="card-header">
             <i class="fas fa-clipboard-list"></i>
-            <h2>审核内容</h2>
+            <h2>审核内容（基准库 - YGT）</h2>
             <span class="badge" id="moduleCount">6 个模块</span>
         </div>
         <div style="margin-bottom: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -929,7 +777,7 @@
         </div>
         <div class="audit-grid" id="auditModules"></div>
         <div style="margin-top: 16px; font-size: 13px; background: #f1f5f9; padding: 10px 18px; border-radius: 12px; color: #334155;">
-            <i class="fas fa-database" style="margin-right: 10px;"></i> 基准版本: YGT V1.0 (2026-06-03)  vs  C社 PM6810LT1-1 (OCR提取)
+            <i class="fas fa-database" style="margin-right: 10px;"></i> 基准版本: YGT V1.0 (2026-06-03) ｜ 投入文件: C社 PM6810LT1-1 (OCR提取)
         </div>
     </div>
 
@@ -958,28 +806,30 @@
         </div>
     </div>
 
-    <!-- ===== 第四部分：不符合项 ===== -->
+    <!-- ===== 第四部分：差异项 ===== -->
     <div class="card">
         <div class="card-header">
             <i class="fas fa-exclamation-triangle" style="color:#dc2626;"></i>
-            <h2>不符合项</h2>
-            <span class="badge danger" id="nonconformanceCount">0 项</span>
+            <h2>差异项</h2>
+            <span class="badge danger" id="diffCount">0 项</span>
         </div>
-        <div id="nonconformanceArea">
-            <table class="nonconformance-table">
+        <div id="diffArea">
+            <table class="diff-table">
                 <thead>
                     <tr>
                         <th class="col-seq">序号</th>
-                        <th class="col-category">不符合项</th>
-                        <th>数据 / 描述</th>
+                        <th class="col-module">模块</th>
+                        <th class="col-item">审核项</th>
+                        <th class="col-benchmark">基准值 (YGT)</th>
+                        <th class="col-input">投入文件值 (C社)</th>
                     </tr>
                 </thead>
-                <tbody id="nonconformanceBody">
+                <tbody id="diffBody">
                     <tr>
-                        <td colspan="3">
+                        <td colspan="5">
                             <div class="empty-state">
                                 <i class="fas fa-check-circle" style="color:#22c55e;"></i>
-                                <p>暂无不符合项，所有审核项目一致</p>
+                                <p>暂无差异项，所有审核项目基准值与投入值一致</p>
                                 <span style="font-size:13px;">点击"执行审核"开始比对</span>
                             </div>
                         </td>
@@ -997,7 +847,7 @@
             <span class="badge" id="compareCount">0 项</span>
         </div>
         <div style="font-size:13px; color:#64748b; margin-bottom:12px;">
-            <i class="fas fa-info-circle"></i> 投入文件 vs 基准文件 (YGT V1.0) 逐项比对结果
+            <i class="fas fa-info-circle"></i> YGT (基准) vs C社 (投入) 逐项比对结果
         </div>
         <div class="compare-wrapper">
             <table class="compare-table">
@@ -1006,7 +856,7 @@
                         <th class="col-module">模块</th>
                         <th class="col-item">审核项</th>
                         <th class="col-benchmark">基准值 (YGT)</th>
-                        <th class="col-input">投入文件值</th>
+                        <th class="col-input">投入值 (C社)</th>
                         <th class="col-result">结论</th>
                     </tr>
                 </thead>
@@ -1043,170 +893,252 @@
 
 <script>
     // ============================================================
-    //  用户管理
+    //  基准库数据 - YGT vs C社 (CSOT) 真实差异
+    //  基准值 = YGT图纸数据 ｜ 投入值 = C社(CSOT)图纸数据
     // ============================================================
-    const USERS = {
-        alice: { name: 'Alice', role: '审核员', avatar: 'A' },
-        bob: { name: 'Bob', role: '工程师', avatar: 'B' },
-        carol: { name: 'Carol', role: '质量经理', avatar: 'C' },
-        david: { name: 'David', role: '供应商代表', avatar: 'D' }
-    };
-
-    let currentUser = 'alice';
-
-    function switchUser(userId) {
-        if (!USERS[userId]) return;
-        currentUser = userId;
-        const user = USERS[userId];
-        document.getElementById('currentUserAvatar').textContent = user.avatar;
-        document.getElementById('currentUserName').textContent = user.name;
-        document.getElementById('currentUserRole').textContent = user.role;
-        document.querySelectorAll('.user-selector button').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.user === userId);
-        });
-    }
-
-    // ============================================================
-    //  文件管理 (多人共享 - 使用 localStorage 持久化)
-    // ============================================================
-    let sharedFiles = [];
-    let currentFileId = null;
-
-    // 从 localStorage 加载数据
-    function loadFromStorage() {
-        try {
-            const saved = localStorage.getItem('lcd_audit_files');
-            if (saved) {
-                sharedFiles = JSON.parse(saved);
-                // 确保至少有一个活跃文件
-                const hasActive = sharedFiles.some(f => f.isActive);
-                if (sharedFiles.length > 0 && !hasActive) {
-                    sharedFiles[0].isActive = true;
-                }
-                currentFileId = sharedFiles.find(f => f.isActive)?.id || null;
+    function getDefaultModules() {
+        return [
+            // ===== 一、球标尺寸 =====
+            {
+                id: 'balloon',
+                label: '球标尺寸',
+                icon: 'fa-ruler-combined',
+                items: [
+                    // 主视图 - 全部一致
+                    { item: 'FPC宽度', benchmark: '36.21 ±0.10', input: '36.21 ±0.10' },
+                    { item: 'OCA宽度', benchmark: '73.26 ±0.10', input: '73.26 ±0.10' },
+                    { item: 'AA有效显示区', benchmark: '71.56 ±0.08', input: '71.56 ±0.08' },
+                    { item: '上POL/ACF&TFT', benchmark: '73.36 ±0.10', input: '73.36 ±0.10' },
+                    { item: '下POL', benchmark: '73.46 ±0.10', input: '73.46 ±0.10' },
+                    { item: 'CG 不含油墨厚度', benchmark: '0.60 ±0.05', input: '0.60 ±0.05' },
+                    { item: 'CG 含油墨厚度', benchmark: '0.612 ±0.06', input: '0.612 ±0.06' },
+                    { item: 'TLCM总厚度', benchmark: '1.970 ±0.15', input: '1.970 ±0.15' },
+                    { item: 'OCA+LCM厚度', benchmark: '0.370 ±0.1', input: '0.370 ±0.1' },
+                    { item: 'VA-OG间距', benchmark: '1.83 ±0.10', input: '1.83 ±0.10' },
+                    { item: 'VA-VA间距', benchmark: '0.20 ±0.15', input: '0.20 ±0.15' },
+                    { item: 'LCD-LCM间距', benchmark: '0.15 ±0.15', input: '0.15 ±0.15' },
+                    { item: '内径(保护膜扩孔)', benchmark: '3.60', input: '3.60' },
+                    { item: '外径', benchmark: '6.04', input: '6.04' },
+                    { item: '点胶内径', benchmark: '3.230 ±0.08', input: '3.230 ±0.08' },
+                    { item: 'EMI内缩', benchmark: '0.35 ±0.05', input: '0.35 ±0.05' },
+                    { item: 'FPC+AD+SUS', benchmark: '0.45 ±0.05', input: '0.45 ±0.05' },
+                    { item: '含EMI厚度', benchmark: '0.13 ±0.03', input: '0.13 ±0.03' },
+                    { item: 'A', benchmark: '1.96 ±0.10', input: '1.96 ±0.10' },
+                    { item: 'CG翘曲度', benchmark: '≤0.25 MAX', input: '≤0.25 MAX' },
+                    // 侧视图 - 全部一致
+                    { item: 'BL-CG间距', benchmark: '1.53 ±0.2', input: '1.53 ±0.2' },
+                    { item: 'BL-OG间距', benchmark: '0.98 ±0.2', input: '0.98 ±0.2' },
+                    { item: '点胶孔中心-OG边', benchmark: '6.71 ±0.2', input: '6.71 ±0.2' },
+                    { item: '点胶孔中心-CG边', benchmark: '37.81 ±0.2', input: '37.81 ±0.2' },
+                    // DETAIL A - 全部一致
+                    { item: '一道胶内径', benchmark: '1.23 ±0.062', input: '1.23 ±0.062' },
+                    { item: '一道胶同心度', benchmark: '0.1 MAX', input: '0.1 MAX' },
+                    { item: '二道胶内径', benchmark: '1.23 ±0.089', input: '1.23 ±0.089' },
+                    { item: '二道胶同心度', benchmark: '0.1 MAX', input: '0.1 MAX' },
+                    { item: 'LCD外径', benchmark: '4.85', input: '4.85' },
+                    { item: 'LCD内径', benchmark: '3.6', input: '3.6' },
+                    { item: '点胶宽度', benchmark: '0.325 MAX', input: '0.325 MAX' },
+                    { item: '点胶高度', benchmark: '0.3~0.48', input: '0.3~0.48' },
+                    { item: '一次胶到POL距离', benchmark: '0.10 MAX', input: '0.10 MAX' },
+                    // 风险提示项
+                    { item: '公差待定', benchmark: '待定', input: '待定' },
+                    { item: 'Sensor孔距背光', benchmark: '0.275', input: '0.275' },
+                    { item: 'FPC弯折公差', benchmark: '待定', input: '待定' },
+                    { item: 'EMI内缩(参考设计)', benchmark: '0.4', input: '0.4' },
+                    { item: '石墨片宽度', benchmark: '0.6', input: '0.6' },
+                    { item: 'FPC内凹+定位轴', benchmark: '—', input: '—' },
+                ]
+            },
+            // ===== 二、CG NOTES - 全部一致 =====
+            {
+                id: 'cg',
+                label: 'CG Note',
+                icon: 'fa-layer-group',
+                items: [
+                    { item: 'CG材质', benchmark: '康宁GG7i, T=0.6mm, 2D', input: '康宁GG7i, T=0.6mm, 2D' },
+                    { item: 'CS', benchmark: '900~1250 MPa', input: '900~1250 MPa' },
+                    { item: 'CSK', benchmark: '110~190 MPa', input: '110~190 MPa' },
+                    { item: 'DOL', benchmark: '6.4~8.3 μm', input: '6.4~8.3 μm' },
+                    { item: 'DOC', benchmark: '110~130 μm', input: '110~130 μm' },
+                    { item: 'CT', benchmark: '60 MPa', input: '60 MPa' },
+                    { item: '表面硬度', benchmark: '≥8H (1000g)', input: '≥8H (1000g)' },
+                    { item: '透过率', benchmark: '≥91%', input: '≥91%' },
+                    { item: '雾度(Haze)', benchmark: '≤1%', input: '≤1%' },
+                    { item: '光弹系数', benchmark: '30.8 nm/(cm·MPa)', input: '30.8 nm/(cm·MPa)' },
+                    { item: '折射率', benchmark: '1.51', input: '1.51' },
+                    { item: '小球冲击', benchmark: '130g, Ø32mm, 20cm自由跌落, 0.26J, 无破碎(距VA边10mm)', input: '130g, Ø32mm, 20cm自由跌落, 0.26J, 无破碎(距VA边10mm)' },
+                    { item: '四轴弯曲(4PB)', benchmark: 'X轴≥600MPa (上跨距20mm/下跨距40mm/杆直径6mm/10mm/min)', input: 'X轴≥600MPa (上跨距20mm/下跨距40mm/杆直径6mm/10mm/min)' },
+                    { item: '百格测试', benchmark: '≥4B (60°C/95%RH/240H + 100°C水煮30min后)', input: '≥4B (60°C/95%RH/240H + 100°C水煮30min后)' },
+                    { item: 'OD值', benchmark: '≥5.0', input: '≥5.0' },
+                    { item: '阻抗值', benchmark: '>1000MΩ (10mm间距, 12KV ESD后)', input: '>1000MΩ (10mm间距, 12KV ESD后)' },
+                    { item: '油墨总厚度', benchmark: '≤15μm', input: '≤15μm' },
+                    { item: '达因值-不擦拭', benchmark: '≥32 Dyne (德国Arcotest, 5s内收缩≤20%)', input: '≥32 Dyne (德国Arcotest, 5s内收缩≤20%)' },
+                    { item: '达因值-酒精擦拭', benchmark: '≥34 Dyne (酒精擦拭后, 德国Arcotest)', input: '≥34 Dyne (酒精擦拭后, 德国Arcotest)' },
+                    { item: 'CG研磨', benchmark: '钢化后上下平磨(白蜡皮), CS变化量≥30MPa', input: '钢化后上下平磨(白蜡皮), CS变化量≥30MPa' },
+                    { item: '摄像孔干涉条纹', benchmark: '≤6条, PV值≤1', input: '≤6条, PV值≤1' },
+                    { item: '附着力测试', benchmark: '≥4B, 划痕硬度≥1H(750g), 油墨不脱落', input: '≥4B, 划痕硬度≥1H(750g), 油墨不脱落' },
+                    { item: 'IR孔透过率', benchmark: '出货全检, 光期903测试仪', input: '出货全检, 光期903测试仪' },
+                    { item: '水流前后功能孔透过率', benchmark: '满足规格(按RA标准收集数据)', input: '满足规格(按RA标准收集数据)' },
+                    { item: 'CG环境光孔透过率', benchmark: '满足终端标准片范围(上下限由终端提供)', input: '满足终端标准片范围(上下限由终端提供)' },
+                    { item: '抗指纹镀膜耐磨', benchmark: '2500 cycles (0000#钢丝绒/1kg/10x10mm/25mm/60cyc/min)', input: '2500 cycles (0000#钢丝绒/1kg/10x10mm/25mm/60cyc/min)' },
+                    { item: '单CG翘曲度', benchmark: '≤0.25mm', input: '≤0.25mm' },
+                    { item: '操作温度', benchmark: '-30°C~70°C, 10%~90%RH', input: '-30°C~70°C, 10%~90%RH' },
+                    { item: '储存温度', benchmark: '-40°C~80°C, 40%~65%RH', input: '-40°C~80°C, 40%~65%RH' },
+                    { item: 'CPK要求', benchmark: 'CPK≥1.33(单机台) / CPK≥1.0(混合机台)', input: 'CPK≥1.33(单机台) / CPK≥1.0(混合机台)' },
+                    { item: '未注公差', benchmark: '±0.2mm', input: '±0.2mm' },
+                    { item: '环保要求', benchmark: 'Q/S0002+HF, 符合传音《不使用禁用物质协议》', input: 'Q/S0002+HF, 符合传音《不使用禁用物质协议》' },
+                    { item: '环境物质管理', benchmark: 'RoHS, HF, REACH', input: 'RoHS, HF, REACH' },
+                ]
+            },
+            // ===== 三、LCM NOTES - 含差异 =====
+            {
+                id: 'lcm',
+                label: 'LCD Note',
+                icon: 'fa-tv',
+                items: [
+                    { item: 'Display Type', benchmark: '6.808" a-Si TFT LCD, 16.7M Colors, In-cell, With CG', input: '6.808" a-Si TFT LCD, 16.7M Colors, In-cell, With CG' },
+                    { item: 'Display Mode', benchmark: 'Negative Mode, Normally Black', input: 'Negative Mode, Normally Black' },
+                    { item: 'Viewing Direction', benchmark: 'ALL Direction, 使用视角方向: 6 O\'CLOCK', input: 'ALL Direction, 使用视角方向: 6 O\'CLOCK' },
+                    // ⚠️ 差异：Driver IC
+                    { item: 'Driver IC', benchmark: 'TBD（待确认）', input: 'ICNL9916XAC (CSOT BD)' },
+                    { item: 'Refresh Rate', benchmark: '45Hz / 60Hz / 90Hz / 120Hz', input: '45Hz / 60Hz / 90Hz / 120Hz' },
+                    { item: 'OTP', benchmark: 'Vcom / Gamma / Register OTP', input: 'Vcom / Gamma / Register OTP' },
+                    { item: 'Gamma', benchmark: '2.2±0.2(试产) / 2.2±0.3(量产)', input: '2.2±0.2(试产) / 2.2±0.3(量产)' },
+                    { item: 'DC-AVDD', benchmark: '+6.0V', input: '+6.0V' },
+                    { item: 'DC-AVEE', benchmark: '-6.0V', input: '-6.0V' },
+                    { item: 'DC-VIO18', benchmark: '1.8V', input: '1.8V' },
+                    { item: 'Flicker', benchmark: '≤ -30dB', input: '≤ -30dB' },
+                    { item: 'Crosstalk', benchmark: '<3%', input: '<3%' },
+                    { item: 'Contrast Ratio', benchmark: '1500(TYP) / 1000(MIN)', input: '1500(TYP) / 1000(MIN)' },
+                    { item: 'LED数量', benchmark: '20颗, 5S4P', input: '20颗, 5S4P' },
+                    { item: '总电流', benchmark: '80mA (TYP)', input: '80mA (TYP)' },
+                    { item: '单路电流', benchmark: '20mA', input: '20mA' },
+                    { item: '单灯电压', benchmark: '2.7~2.9V/LED (全球专利)', input: '2.7~2.9V/LED (全球专利)' },
+                    { item: '总电压', benchmark: '13.5~14.5V', input: '13.5~14.5V' },
+                    { item: '色坐标 x', benchmark: '0.295±0.02', input: '0.295±0.02' },
+                    { item: '色坐标 y', benchmark: '0.305±0.02', input: '0.305±0.02' },
+                    { item: '色坐标CPK', benchmark: 'CPK≥1.33 (同批次, 以中心样色坐标计算)', input: 'CPK≥1.33 (同批次, 以中心样色坐标计算)' },
+                    { item: '中心亮度', benchmark: '850 cd/m²(MIN) / 1000 cd/m²(TYP)', input: '850 cd/m²(MIN) / 1000 cd/m²(TYP)' },
+                    { item: 'NTSC', benchmark: '80%(MIN) / 83%(TYP)', input: '80%(MIN) / 83%(TYP)' },
+                    { item: 'Uniformity', benchmark: '80%(MIN) / 85%(TYP), 9点, 均值≥85%(32pcs)', input: '80%(MIN) / 85%(TYP), 9点, 均值≥85%(32pcs)' },
+                    { item: '色度一致性', benchmark: 'ΔE≤1.2', input: 'ΔE≤1.2' },
+                    { item: 'FPC Connector-ICN', benchmark: 'JM61M92300431T', input: 'JM61M92300431T' },
+                    { item: 'FPC Connector-ACT', benchmark: 'JAE TP260KP060VA3', input: 'JAE TP260KP060VA3' },
+                    { item: 'MIPI差分阻抗', benchmark: '100±10Ω', input: '100±10Ω' },
+                    { item: 'USB阻抗(DP/DM)', benchmark: '90±10% Ω', input: '90±10% Ω' },
+                    { item: 'BTB钢片补强接地阻抗', benchmark: '任意点≤3Ω', input: '任意点≤3Ω' },
+                    { item: '露铜导电胶接地阻抗', benchmark: '≤3Ω (对应背光铁框)', input: '≤3Ω (对应背光铁框)' },
+                    { item: 'Light Guide', benchmark: 'V-CUT', input: 'V-CUT' },
+                    { item: '黑胶激活率', benchmark: '≥80% (宽度法)', input: '≥80% (宽度法)' },
+                    { item: '灯胶激活率', benchmark: '≥80% (百格法)', input: '≥80% (百格法)' },
+                    { item: 'LCM翘曲度', benchmark: '≤0.25mm (OG面以下)', input: '≤0.25mm (OG面以下)' },
+                    { item: '正面保护膜材质', benchmark: 'TBD（待确认）, 保质期六个月', input: 'TBD（待确认）, 保质期六个月' },
+                    { item: '防静电要求', benchmark: '撕膜静电峰值电压<500V, 表面阻抗10⁹~10¹¹Ω', input: '撕膜静电峰值电压<500V, 表面阻抗10⁹~10¹¹Ω' },
+                    { item: '操作温度', benchmark: '-20°C ~ 70°C', input: '-20°C ~ 70°C' },
+                    { item: '储存温度', benchmark: '-40°C ~ 80°C', input: '-40°C ~ 80°C' },
+                    { item: '标注说明', benchmark: 'CPK=CPK管控尺寸, *=重点尺寸, 球标=IQC检验尺寸, ()=参考尺寸', input: 'CPK=CPK管控尺寸, *=重点尺寸, 球标=IQC检验尺寸, ()=参考尺寸' },
+                    { item: '未注公差', benchmark: '±0.2mm', input: '±0.2mm' },
+                    { item: '环保要求', benchmark: '符合传音《不使用禁用物质协议》', input: '符合传音《不使用禁用物质协议》' },
+                    { item: '天马环境标准', benchmark: 'RoHS, HF, REACH', input: 'RoHS, HF, REACH' },
+                ]
+            },
+            // ===== 四、Pin 定义 - 全部一致 =====
+            {
+                id: 'pin',
+                label: 'Pin 定义',
+                icon: 'fa-microchip',
+                items: (function() {
+                    const pins = [];
+                    const pinNames = [
+                        'LEDK', 'D3P', 'D3N', 'GND', 'D0P', 'D0N', 'GND', 'CLKP', 'CLKN', 'GND',
+                        'D1P', 'D1N', 'GND', 'D2P', 'D2N', 'USB_EXTINT(4G)', 'HPR', 'AVSS28/XMIC_N(4G)',
+                        'HPL', 'RFCTL2', 'AU_REF/FM_P', 'XMIC_P', 'HP_DET', 'GND', 'DM', 'DP',
+                        'CC2', 'CC1', 'NC', 'VBUS', 'VBAT', 'VBAT', 'VBAT', 'VIBR', 'SCL', 'SDA',
+                        'RFCTL1', 'VDDLDO', 'RFCTLO', 'SAR2(5G)/SUB(4G)', 'SARI(5G)/USB_EXTINT(4G)',
+                        'MICP', 'MICBIAS(4G)', 'BATERY_ADC(4G)', 'CABC(100Ω)', 'TE', 'LCD_RST',
+                        'VIO18', 'TP_RST', 'TP_INT', 'SPI_DI(MISO)', 'SPI_DO(MOSI)', 'SPI_CLK',
+                        'SPI_CS', 'LCD_ID', 'AVDD(+6.0V)', 'NC', 'AVEE(-6.0V)', 'NC', 'LEDA',
+                        'GND', 'GND', 'VBUS', 'VBUS'
+                    ];
+                    pinNames.forEach((name, idx) => {
+                        pins.push({
+                            item: `连接器1 - Pin${idx+1} ${name}`,
+                            benchmark: name,
+                            input: name
+                        });
+                    });
+                    return pins;
+                })()
+            },
+            // ===== 五、BOM - 全部一致 =====
+            {
+                id: 'bom',
+                label: 'BOM',
+                icon: 'fa-boxes',
+                items: [
+                    { item: '油墨型号 CML-7003', benchmark: 'CML-7003', input: 'CML-7003' },
+                    { item: '油墨型号 CML-8101601A(N)', benchmark: 'CML-8101601A(N)', input: 'CML-8101601A(N)' },
+                    { item: '油墨型号 YM-GLN-0209', benchmark: 'YM-GLN-0209', input: 'YM-GLN-0209' },
+                    { item: '油墨型号 GV3 2011-1084C', benchmark: 'GV3 2011-1084C', input: 'GV3 2011-1084C' },
+                    { item: '油墨型号 EFK-1122', benchmark: 'EFK-1122', input: 'EFK-1122' },
+                    { item: 'Cover Glass', benchmark: '康宁 6G7i 二强 0.60', input: '康宁 6G7i 二强 0.60' },
+                    { item: 'OCA', benchmark: '3M 7104 0.10', input: '3M 7104 0.10' },
+                    { item: 'LCD', benchmark: 'BM6810LT1-1 0.30', input: 'BM6810LT1-1 0.30' },
+                    { item: 'IC', benchmark: 'TD4160C 0.17', input: 'TD4160C 0.17' },
+                    { item: 'CF POL', benchmark: 'ALN-2143ZETPSM 0.069', input: 'ALN-2143ZETPSM 0.069' },
+                    { item: 'TFT POL', benchmark: 'ALN-2044ZETBS 0.074', input: 'ALN-2044ZETBS 0.074' },
+                    { item: 'Silicon Glue', benchmark: 'DOWSIL™ 7091', input: 'DOWSIL™ 7091' },
+                    { item: 'Curtain Tape', benchmark: 'JLBD-3060 0.06', input: 'JLBD-3060 0.06' },
+                    { item: 'Prism Up', benchmark: 'TR524 0.093', input: 'TR524 0.093' },
+                    { item: 'Prism Down', benchmark: 'KR324 0.062', input: 'KR324 0.062' },
+                    { item: 'Diffuser', benchmark: 'CS189 0.055', input: 'CS189 0.055' },
+                    { item: 'LGP', benchmark: 'HL-8005 0.34', input: 'HL-8005 0.34' },
+                    { item: 'Reflector', benchmark: 'F20 0.08', input: 'F20 0.08' },
+                    { item: 'LED', benchmark: '2604 支架 20pcs V0.4', input: '2604 支架 20pcs V0.4' },
+                    { item: 'FPC Tape', benchmark: '3808BWH-D2 0.085', input: '3808BWH-D2 0.085' },
+                    { item: 'Insert Mold', benchmark: 'PC5000A+SUS304 1.0000', input: 'PC5000A+SUS304 1.0000' },
+                    { item: 'Backlight', benchmark: '弘汉 0.81', input: '弘汉 0.81' },
+                    { item: 'FPC', benchmark: 'TBD 0.13', input: 'TBD 0.13' },
+                    { item: 'COG ACF', benchmark: 'CP532SA', input: 'CP532SA' },
+                    { item: 'FOG ACF', benchmark: 'AC-3418CDH', input: 'AC-3418CDH' },
+                    { item: 'UV Glue (PAD面胶)', benchmark: 'FPDLL', input: 'FPDLL' },
+                    { item: 'AG (防眩光)', benchmark: 'TH-3020', input: 'TH-3020' },
+                    { item: 'UV Glue (一线胶)', benchmark: 'Loctite 0V3318LV', input: 'Loctite 0V3318LV' },
+                    { item: 'Hole Glue (孔胶)', benchmark: 'PURIOR', input: 'PURIOR' },
+                ]
+            },
+            // ===== 六、图纸信息 - 含差异 =====
+            {
+                id: 'drawing',
+                label: '图纸信息',
+                icon: 'fa-vector-square',
+                items: [
+                    // ⚠️ 差异：图纸视图
+                    { item: '图纸视图', benchmark: '主视图+侧视图+FPC展开参考图+FPC弯折出货图+DETAIL A(一道胶/二道胶)', input: '主视图+侧视图+FPC弯折展开参考图+FPC出货弯折图+DETAIL C/D(一道胶/二道胶)' },
+                    { item: '电路图', benchmark: 'LED PIN MAP+LED CIRCUIT+LCD_ID CIRCUIT', input: 'LED PIN MAP+LED CIRCUIT(全球专利)+LCD_ID CIRCUIT' },
+                    { item: '管控标识', benchmark: 'CPK/*/球标/参考', input: 'CPK/*/球标/参考' },
+                    { item: 'CG材质', benchmark: '康宁GG7i,T=0.6mm,2D', input: '康宁GG7i,T=0.6mm,2D' },
+                    { item: 'CG强化参数', benchmark: 'CS:900-1250MPa,CSK:110-190MPa,DOL:6.4-8.3μm,DOC:110-130μm,CT:60MPa', input: 'CS:900-1250MPa,CSK:110-190MPa,DOL:6.4-8.3μm,DOC:110-130μm,CT:60MPa' },
+                    { item: 'LCD_ID', benchmark: 'R1=10K,R2=20K,LCM_ID=1.2V', input: 'R1=10K,R2=20K,LCM_ID=1.2V' },
+                    // ⚠️ 差异：Software ID (DC)
+                    { item: 'Software ID (DC)', benchmark: 'DA=0x20,DB=0x50,DC=0x28', input: 'DA=0x20,DB=0x50,DC=0x16' },
+                    { item: 'LED', benchmark: '20颗,5S4P,总电流80mA,单路20mA,2.7-2.9V/LED,总电压13.5-14.5V', input: '20颗,5S4P,总电流80mA,单路20mA,2.7-2.9V/LED,总电压13.5-14.5V' },
+                ]
             }
-        } catch (e) {
-            console.warn('加载存储数据失败:', e);
-        }
-    }
-
-    function saveToStorage() {
-        try {
-            localStorage.setItem('lcd_audit_files', JSON.stringify(sharedFiles));
-        } catch (e) {
-            console.warn('保存存储数据失败:', e);
-        }
-    }
-
-    function addFile(name, uploadedBy) {
-        const id = 'file_' + Date.now();
-        const file = {
-            id: id,
-            name: name,
-            uploadedBy: uploadedBy || currentUser,
-            uploadTime: new Date().toLocaleString(),
-            isActive: sharedFiles.length === 0
-        };
-        sharedFiles.push(file);
-        if (file.isActive) currentFileId = id;
-        saveToStorage();
-        renderFileList();
-        updateFileBadge();
-        return id;
-    }
-
-    function switchFile(id) {
-        sharedFiles.forEach(f => f.isActive = (f.id === id));
-        currentFileId = id;
-        saveToStorage();
-        renderFileList();
-        resetAudit();
-    }
-
-    function removeFile(id) {
-        if (!confirm('确定要删除此文件吗？')) return;
-        const idx = sharedFiles.findIndex(f => f.id === id);
-        if (idx === -1) return;
-        sharedFiles.splice(idx, 1);
-        if (sharedFiles.length > 0) {
-            sharedFiles[0].isActive = true;
-            currentFileId = sharedFiles[0].id;
-        } else {
-            currentFileId = null;
-        }
-        saveToStorage();
-        renderFileList();
-        updateFileBadge();
-        resetAudit();
-    }
-
-    function renderFileList() {
-        const container = document.getElementById('fileList');
-        if (sharedFiles.length === 0) {
-            container.innerHTML = `
-                <div class="empty-state" style="padding:16px 0;">
-                    <i class="fas fa-inbox" style="font-size:24px;"></i>
-                    <p style="font-size:13px;">暂无文件，上传第一个PDF开始审核</p>
-                </div>
-            `;
-            return;
-        }
-        let html = '';
-        sharedFiles.forEach(f => {
-            const user = USERS[f.uploadedBy] || { name: f.uploadedBy, avatar: '?' };
-            html += `
-                <div class="file-list-item" style="${f.isActive ? 'border-color:#2563eb;background:#f0f5ff;' : ''}">
-                    <div class="file-info">
-                        <i class="fas fa-file-pdf"></i>
-                        <div>
-                            <div class="fname">${f.name} ${f.isActive ? '📍' : ''}</div>
-                            <div class="fmeta">上传者: ${user.name} · ${f.uploadTime}</div>
-                        </div>
-                    </div>
-                    <div class="file-actions">
-                        ${!f.isActive ? `<button class="btn btn-primary btn-xs" onclick="switchFile('${f.id}')">激活</button>` : ''}
-                        <button class="btn btn-danger btn-xs" onclick="removeFile('${f.id}')"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
-    }
-
-    function updateFileBadge() {
-        document.getElementById('fileCountBadge').textContent = `${sharedFiles.length} 个文件`;
-        const active = sharedFiles.find(f => f.isActive);
-        if (active) {
-            document.getElementById('pdfFileName').textContent = active.name;
-            const preview = document.getElementById('pdfPreview');
-            if (!preview) {
-                const zone = document.getElementById('pdfUploadArea');
-                const existing = zone.querySelector('.pdf-preview');
-                if (existing) existing.remove();
-                const div = document.createElement('div');
-                div.className = 'pdf-preview';
-                div.id = 'pdfPreview';
-                div.innerHTML = `
-                    <i class="fas fa-file-pdf"></i>
-                    <span>${active.name}</span>
-                    <span class="uploader-tag">上传者: ${USERS[active.uploadedBy]?.name || active.uploadedBy}</span>
-                    <button class="btn btn-danger btn-xs" onclick="clearPDF()" style="padding:2px 10px;font-size:11px;"><i class="fas fa-times"></i></button>
-                `;
-                zone.appendChild(div);
-            } else {
-                preview.querySelector('span').textContent = active.name;
-                const tag = preview.querySelector('.uploader-tag');
-                if (tag) tag.textContent = `上传者: ${USERS[active.uploadedBy]?.name || active.uploadedBy}`;
-            }
-        } else {
-            document.getElementById('pdfFileName').textContent = '点击或拖拽上传 PDF';
-            const preview = document.getElementById('pdfPreview');
-            if (preview) preview.remove();
-        }
+        ];
     }
 
     // ============================================================
-    //  PDF 上传 (带进度条)
+    //  数据管理
+    // ============================================================
+    let moduleData = [];
+    let currentEditModuleId = null;
+    let modalTempItems = [];
+    let pdfLoaded = false;
+    let auditDone = false;
+
+    // ============================================================
+    //  PDF 上传
     // ============================================================
     function handlePDFUpload(e) {
         const file = e.target.files[0];
@@ -1230,8 +1162,7 @@
                     uploadProgress.style.width = '0%';
                     progressText.textContent = '';
                 }, 500);
-                addFile(file.name, currentUser);
-                setTimeout(() => runAudit(), 300);
+                setPDF(file.name);
             }
             uploadProgress.style.width = progress + '%';
             progressText.textContent = Math.round(progress) + '%';
@@ -1240,223 +1171,26 @@
         e.target.value = '';
     }
 
+    function setPDF(name) {
+        pdfLoaded = true;
+        document.getElementById('pdfFileName').textContent = name;
+        document.getElementById('pdfPreview').style.display = 'flex';
+        document.getElementById('pdfPreviewName').textContent = name;
+        document.getElementById('currentDocStatus').textContent = '已加载: ' + name;
+        document.getElementById('fileStatusBadge').textContent = '已加载';
+        document.getElementById('fileStatusBadge').className = 'badge success';
+        resetAudit();
+    }
+
     function clearPDF() {
-        if (currentFileId) {
-            removeFile(currentFileId);
-        }
-        const preview = document.getElementById('pdfPreview');
-        if (preview) preview.remove();
+        pdfLoaded = false;
+        document.getElementById('pdfFileName').textContent = '点击或拖拽上传 PDF';
+        document.getElementById('pdfPreview').style.display = 'none';
+        document.getElementById('currentDocStatus').textContent = '未加载';
+        document.getElementById('fileStatusBadge').textContent = '未加载';
+        document.getElementById('fileStatusBadge').className = 'badge';
+        resetAudit();
     }
-
-    // ============================================================
-    //  模块数据管理 (使用 localStorage 持久化)
-    // ============================================================
-    let moduleData = [];
-
-    // 默认模块数据
-    function getDefaultModules() {
-        return [
-            {
-                id: 'balloon',
-                label: '球标尺寸',
-                icon: 'fa-ruler-combined',
-                items: [
-                    { item: 'FPC宽度', benchmark: '36.21 ±0.10', input: '36.21 ±0.10', result: '一致' },
-                    { item: 'OCA宽度', benchmark: '73.26 ±0.10', input: '73.26 ±0.10', result: '一致' },
-                    { item: 'AA有效显示区', benchmark: '71.56 ±0.08', input: '71.56 ±0.08', result: '一致' },
-                    { item: '上POL/ACF&TFT', benchmark: '73.36 ±0.10', input: '73.36 ±0.10', result: '一致' },
-                    { item: '下POL', benchmark: '73.46 ±0.10', input: '73.46 ±0.10', result: '一致' },
-                    { item: 'CG不含油墨厚度', benchmark: '0.60 ±0.05', input: '0.60 ±0.05', result: '一致' },
-                    { item: 'CG含油墨厚度', benchmark: '0.612 ±0.06', input: '0.612 ±0.06', result: '一致' },
-                    { item: 'TLCM总厚度', benchmark: '1.970 ±0.15', input: '1.970 ±0.15', result: '一致' },
-                    { item: 'OCA+LCM厚度', benchmark: '0.370 ±0.1', input: '0.370 ±0.1', result: '一致' },
-                    { item: 'VA-OG间距', benchmark: '1.83 ±0.10', input: '1.83 ±0.10', result: '一致' },
-                    { item: 'VA-VA间距', benchmark: '0.20 ±0.15', input: '0.20 ±0.15', result: '一致' },
-                    { item: 'LCD-LCM间距', benchmark: '0.15 ±0.15', input: '0.15 ±0.15', result: '一致' },
-                    { item: '内径(保护膜扩孔)', benchmark: '3.60', input: '3.60', result: '一致' },
-                    { item: '外径', benchmark: '6.04', input: '6.04', result: '一致' },
-                    { item: '点胶内径', benchmark: '3.230 ±0.08', input: '3.230 ±0.08', result: '一致' },
-                    { item: 'EMI内缩', benchmark: '0.35 ±0.05', input: '0.35 ±0.05', result: '一致' },
-                    { item: 'FPC+AD+SUS', benchmark: '0.45 ±0.05', input: '0.45 ±0.05', result: '一致' },
-                    { item: '含EMI厚度', benchmark: '0.13 ±0.03', input: '0.13 ±0.03', result: '一致' },
-                    { item: 'A尺寸', benchmark: '1.96 ±0.10', input: '1.96 ±0.10', result: '一致' },
-                    { item: 'CG翘曲度', benchmark: '≤0.25 MAX', input: '≤0.25 MAX', result: '一致' },
-                    { item: 'BL-CG间距', benchmark: '1.53 ±0.2', input: '1.53 ±0.2', result: '一致' },
-                    { item: 'BL-OG间距', benchmark: '0.98 ±0.2', input: '0.98 ±0.2', result: '一致' },
-                    { item: '点胶孔中心-OG边', benchmark: '6.71 ±0.2', input: '6.71 ±0.2', result: '一致' },
-                    { item: '点胶孔中心-CG边', benchmark: '37.81 ±0.2', input: '37.81 ±0.2', result: '一致' },
-                    { item: '一道胶内径', benchmark: '1.23 ±0.062', input: '1.23 ±0.062', result: '一致' },
-                    { item: '一道胶同心度', benchmark: '0.1 MAX', input: '0.1 MAX', result: '一致' },
-                    { item: '二道胶内径', benchmark: '1.23 ±0.089', input: '1.23 ±0.089', result: '一致' },
-                    { item: '二道胶同心度', benchmark: '0.1 MAX', input: '0.1 MAX', result: '一致' },
-                    { item: 'LCD外径', benchmark: '4.85', input: '4.85', result: '一致' },
-                    { item: 'LCD内径', benchmark: '3.6', input: '3.6', result: '一致' },
-                    { item: '点胶宽度', benchmark: '0.325 MAX', input: '0.325 MAX', result: '一致' },
-                    { item: '点胶高度', benchmark: '0.3~0.48', input: '0.3~0.48', result: '一致' },
-                    { item: '一次胶到POL距离', benchmark: '0.10 MAX', input: '0.10 MAX', result: '一致' },
-                    { item: '球标4 (公差待定)', benchmark: '待确认', input: '待定', result: '不一致' },
-                    { item: 'Sensor孔距背光', benchmark: '0.275 (风险项)', input: '0.275', result: '不一致' },
-                    { item: 'EMI内缩(参考设计)', benchmark: '0.4', input: '0.4', result: '不一致' },
-                    { item: '石墨片宽度', benchmark: '0.6 (距BLU边缘)', input: '0.6', result: '不一致' },
-                ]
-            },
-            {
-                id: 'cg',
-                label: 'CG Note',
-                icon: 'fa-layer-group',
-                items: [
-                    { item: 'CG材质', benchmark: '康宁GG7i, T=0.6mm, 2D', input: '康宁GG7i, T=0.6mm, 2D', result: '一致' },
-                    { item: 'CS强化', benchmark: '900~1250 MPa', input: '900~1250 MPa', result: '一致' },
-                    { item: 'CSK强化', benchmark: '110~190 MPa', input: '110~190 MPa', result: '一致' },
-                    { item: 'DOL', benchmark: '6.4~8.3 μm', input: '6.4~8.3 μm', result: '一致' },
-                    { item: 'DOC', benchmark: '110~130 μm', input: '110~130 μm', result: '一致' },
-                    { item: 'CT', benchmark: '60 MPa', input: '60 MPa', result: '一致' },
-                    { item: '表面硬度', benchmark: '≥8H (1000g)', input: '≥8H (1000g)', result: '一致' },
-                    { item: '透过率', benchmark: '≥91%', input: '≥91%', result: '一致' },
-                    { item: '雾度(Haze)', benchmark: '≤1%', input: '≤1%', result: '一致' },
-                    { item: '光弹系数', benchmark: '30.8 nm/(cm·MPa)', input: '30.8 nm/(cm·MPa)', result: '一致' },
-                    { item: '折射率', benchmark: '1.51', input: '1.51', result: '一致' },
-                    { item: '小球冲击', benchmark: '130g, Ø32mm, 20cm自由跌落', input: '130g, Ø32mm, 20cm自由跌落', result: '一致' },
-                    { item: '四轴弯曲(4PB)', benchmark: 'X轴≥600MPa', input: 'X轴≥600MPa', result: '一致' },
-                    { item: '百格测试', benchmark: '≥4B (60°C/95%RH/240H)', input: '≥4B (60°C/95%RH/240H)', result: '一致' },
-                    { item: 'OD值', benchmark: '≥5.0', input: '≥5.0', result: '一致' },
-                    { item: '阻抗值', benchmark: '>1000MΩ', input: '>1000MΩ', result: '一致' },
-                    { item: '油墨总厚度', benchmark: '≤15μm', input: '≤15μm', result: '一致' },
-                    { item: '达因值-不擦拭', benchmark: '≥32 Dyne', input: '≥32 Dyne', result: '一致' },
-                    { item: '达因值-酒精擦拭', benchmark: '≥34 Dyne', input: '≥34 Dyne', result: '一致' },
-                    { item: 'CG研磨', benchmark: '钢化后上下平磨', input: '钢化后上下平磨', result: '一致' },
-                    { item: '摄像孔干涉条纹', benchmark: '≤6条, PV值≤1', input: '≤6条, PV值≤1', result: '一致' },
-                    { item: '附着力测试', benchmark: '≥4B, 划痕硬度≥1H', input: '≥4B, 划痕硬度≥1H', result: '一致' },
-                    { item: 'IR孔透过率', benchmark: '出货全检', input: '出货全检', result: '一致' },
-                    { item: '水流前后功能孔透过率', benchmark: '满足规格', input: '满足规格', result: '一致' },
-                    { item: 'CG环境光孔透过率', benchmark: '满足终端标准片范围', input: '满足终端标准片范围', result: '一致' },
-                    { item: '抗指纹镀膜耐磨', benchmark: '2500 cycles', input: '2500 cycles', result: '一致' },
-                    { item: '单CG翘曲度', benchmark: '≤0.25mm', input: '≤0.25mm', result: '一致' },
-                    { item: '操作温度', benchmark: '-30°C~70°C', input: '-30°C~70°C', result: '一致' },
-                    { item: '储存温度', benchmark: '-40°C~80°C', input: '-40°C~80°C', result: '一致' },
-                    { item: 'CPK要求', benchmark: 'CPK≥1.33', input: 'CPK≥1.33', result: '一致' },
-                    { item: '未注公差', benchmark: '±0.2mm', input: '±0.2mm', result: '一致' },
-                    { item: '环保要求', benchmark: 'Q/S0002+HF', input: 'Q/S0002+HF', result: '一致' },
-                    { item: '环境物质管理', benchmark: 'RoHS, HF, REACH', input: 'RoHS, HF, REACH', result: '一致' },
-                ]
-            },
-            {
-                id: 'lcm',
-                label: 'LCD Note',
-                icon: 'fa-tv',
-                items: [
-                    { item: 'Display Type', benchmark: '6.808" a-Si TFT LCD', input: '6.808" a-Si TFT LCD', result: '一致' },
-                    { item: 'Display Mode', benchmark: 'Negative, Normally Black', input: 'Negative, Normally Black', result: '一致' },
-                    { item: 'Viewing Direction', benchmark: 'ALL Direction, 6 O\'CLOCK', input: 'ALL Direction, 6 O\'CLOCK', result: '一致' },
-                    { item: 'Driver IC', benchmark: 'TBD（待确认）', input: 'ICNL9916XAC (CSOT BD)', result: '不一致' },
-                    { item: 'Refresh Rate', benchmark: '45/60/90/120Hz', input: '45/60/90/120Hz', result: '一致' },
-                    { item: 'OTP', benchmark: 'Vcom/Gamma/Register OTP', input: 'Vcom/Gamma/Register OTP', result: '一致' },
-                    { item: 'Gamma', benchmark: '2.2±0.2(试产)/±0.3(量产)', input: '2.2±0.2(试产)/±0.3(量产)', result: '一致' },
-                    { item: 'DC-AVDD', benchmark: '+6.0V', input: '+6.0V', result: '一致' },
-                    { item: 'DC-AVEE', benchmark: '-6.0V', input: '-6.0V', result: '一致' },
-                    { item: 'DC-VIO18', benchmark: '1.8V', input: '1.8V', result: '一致' },
-                    { item: 'Flicker', benchmark: '≤ -30dB', input: '≤ -30dB', result: '一致' },
-                    { item: 'Crosstalk', benchmark: '<3%', input: '<3%', result: '一致' },
-                    { item: 'Contrast Ratio', benchmark: '1500(TYP)/1000(MIN)', input: '1500(TYP)/1000(MIN)', result: '一致' },
-                    { item: 'LED数量', benchmark: '20颗, 5S4P', input: '20颗, 5S4P', result: '一致' },
-                    { item: '总电流', benchmark: '80mA (TYP)', input: '80mA (TYP)', result: '一致' },
-                    { item: '单路电流', benchmark: '20mA', input: '20mA', result: '一致' },
-                    { item: '单灯电压', benchmark: '2.7~2.9V/LED', input: '2.7~2.9V/LED', result: '一致' },
-                    { item: '总电压', benchmark: '13.5~14.5V', input: '13.5~14.5V', result: '一致' },
-                    { item: '色坐标 x', benchmark: '0.295±0.02', input: '0.295±0.02', result: '一致' },
-                    { item: '色坐标 y', benchmark: '0.305±0.02', input: '0.305±0.02', result: '一致' },
-                    { item: '色坐标CPK', benchmark: 'CPK≥1.33', input: 'CPK≥1.33', result: '一致' },
-                    { item: '中心亮度', benchmark: '850 cd/m²(MIN)/1000(TYP)', input: '850 cd/m²(MIN)/1000(TYP)', result: '一致' },
-                    { item: 'NTSC', benchmark: '80%(MIN)/83%(TYP)', input: '80%(MIN)/83%(TYP)', result: '一致' },
-                    { item: 'Uniformity', benchmark: '80%(MIN)/85%(TYP)', input: '80%(MIN)/85%(TYP)', result: '一致' },
-                    { item: '色度一致性', benchmark: 'ΔE≤1.2', input: 'ΔE≤1.2', result: '一致' },
-                    { item: 'FPC Connector-ICN', benchmark: 'JM61M92300431T', input: 'JM61M92300431T', result: '一致' },
-                    { item: 'FPC Connector-ACT', benchmark: 'JAE TP260KP060VA3', input: 'JAE TP260KP060VA3', result: '一致' },
-                    { item: 'MIPI差分阻抗', benchmark: '100±10Ω', input: '100±10Ω', result: '一致' },
-                    { item: 'USB阻抗(DP/DM)', benchmark: '90±10% Ω', input: '90±10% Ω', result: '一致' },
-                    { item: 'BTB钢片补强接地阻抗', benchmark: '任意点≤3Ω', input: '任意点≤3Ω', result: '一致' },
-                    { item: '露铜导电胶接地阻抗', benchmark: '≤3Ω', input: '≤3Ω', result: '一致' },
-                    { item: 'Light Guide', benchmark: 'V-CUT', input: 'V-CUT', result: '一致' },
-                    { item: '黑胶激活率', benchmark: '≥80% (宽度法)', input: '≥80% (宽度法)', result: '一致' },
-                    { item: '灯胶激活率', benchmark: '≥80% (百格法)', input: '≥80% (百格法)', result: '一致' },
-                    { item: 'LCM翘曲度', benchmark: '≤0.25mm', input: '≤0.25mm', result: '一致' },
-                    { item: '正面保护膜材质', benchmark: 'TBD（待确认）', input: 'TBD（待确认）', result: '一致' },
-                    { item: '防静电要求', benchmark: '撕膜<500V, 表面阻抗10⁹~10¹¹Ω', input: '撕膜<500V, 表面阻抗10⁹~10¹¹Ω', result: '一致' },
-                    { item: '操作温度', benchmark: '-20°C~70°C', input: '-20°C~70°C', result: '一致' },
-                    { item: '储存温度', benchmark: '-40°C~80°C', input: '-40°C~80°C', result: '一致' },
-                    { item: '标注说明', benchmark: 'CPK/*/球标/参考', input: 'CPK/*/球标/参考', result: '一致' },
-                    { item: '未注公差', benchmark: '±0.2mm', input: '±0.2mm', result: '一致' },
-                    { item: '环保要求', benchmark: '符合传音协议', input: '符合传音协议', result: '一致' },
-                    { item: '天马环境标准', benchmark: 'RoHS, HF, REACH', input: 'RoHS, HF, REACH', result: '一致' },
-                ]
-            },
-            {
-                id: 'pin',
-                label: 'Pin 定义',
-                icon: 'fa-microchip',
-                items: [
-                    { item: '连接器1 - Pin1 LEDK', benchmark: 'LEDK', input: 'LEDK', result: '一致' },
-                    { item: '连接器1 - Pin2 D3P', benchmark: 'D3P', input: 'D3P', result: '一致' },
-                    { item: '连接器1 - Pin16 USB_EXTINT', benchmark: 'USB_EXTINT(4G)', input: 'USB_EXTINT(4G)', result: '一致' },
-                    { item: '连接器1/2 信号复用', benchmark: '需确认兼容性', input: '存在复用(GND/VBAT/VBUS)', result: '不一致' },
-                ]
-            },
-            {
-                id: 'bom',
-                label: 'BOM',
-                icon: 'fa-boxes',
-                items: [
-                    { item: 'Cover Glass', benchmark: '康宁 6G7i 二强 0.60', input: '康宁 6G7i 二强 0.60', result: '一致' },
-                    { item: 'OCA', benchmark: '3M 7104 0.10', input: '3M 7104 0.10', result: '一致' },
-                    { item: 'LCD', benchmark: 'BM6810LT1-1 0.30', input: 'BM6810LT1-1 0.30', result: '一致' },
-                    { item: 'IC', benchmark: 'TD4160C 0.17', input: 'TD4160C 0.17', result: '一致' },
-                    { item: 'FPC', benchmark: 'TBD', input: '未明确供应商', result: '不一致' },
-                ]
-            },
-            {
-                id: 'drawing',
-                label: '图纸信息',
-                icon: 'fa-vector-square',
-                items: [
-                    { item: '图纸视图', benchmark: '主+侧+FPC展开+FPC弯折+DETAIL A', input: '主+侧+FPC弯折展开+FPC出货+DETAIL C/D', result: '不一致' },
-                    { item: 'CG材质', benchmark: '康宁GG7i, T=0.6mm, 2D', input: '康宁GG7i, T=0.6mm, 2D', result: '一致' },
-                    { item: 'CG强化参数', benchmark: 'CS:900-1250, CSK:110-190', input: 'CS:900-1250, CSK:110-190', result: '一致' },
-                    { item: 'LCD_ID', benchmark: 'R1=10K, R2=20K, 1.2V', input: 'R1=10K, R2=20K, 1.2V', result: '一致' },
-                    { item: 'Software ID (DC)', benchmark: '0x28', input: '0x16', result: '不一致' },
-                    { item: 'LED配置', benchmark: '20颗, 5S4P, 80mA', input: '20颗, 5S4P, 80mA', result: '一致' },
-                ]
-            }
-        ];
-    }
-
-    function loadModulesFromStorage() {
-        try {
-            const saved = localStorage.getItem('lcd_audit_modules');
-            if (saved) {
-                const parsed = JSON.parse(saved);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    moduleData = parsed;
-                    return;
-                }
-            }
-        } catch (e) {
-            console.warn('加载模块数据失败:', e);
-        }
-        // 使用默认数据
-        moduleData = getDefaultModules();
-        saveModulesToStorage();
-    }
-
-    function saveModulesToStorage() {
-        try {
-            localStorage.setItem('lcd_audit_modules', JSON.stringify(moduleData));
-        } catch (e) {
-            console.warn('保存模块数据失败:', e);
-        }
-    }
-
-    let currentEditModuleId = null;
-    let modalTempItems = [];
 
     // ============================================================
     //  渲染模块
@@ -1464,7 +1198,7 @@
     function renderModules() {
         let html = '';
         moduleData.forEach((mod) => {
-            const diffCount = mod.items ? mod.items.filter(item => item.result === '不一致').length : 0;
+            const diffCount = mod.items ? mod.items.filter(item => item.benchmark !== item.input).length : 0;
             html += `
                 <div class="audit-item" data-id="${mod.id}" onclick="openModule('${mod.id}')">
                     <div class="left">
@@ -1508,10 +1242,10 @@
                         <input type="text" value="${escapeHtml(item.item)}" placeholder="审核项名称" data-field="item" data-idx="${idx}">
                     </div>
                     <div class="item-field">
-                        <input type="text" value="${escapeHtml(item.benchmark)}" placeholder="基准值" data-field="benchmark" data-idx="${idx}">
+                        <input type="text" value="${escapeHtml(item.benchmark)}" placeholder="基准值 (YGT)" data-field="benchmark" data-idx="${idx}">
                     </div>
                     <div class="item-field">
-                        <input type="text" value="${escapeHtml(item.input)}" placeholder="投入文件值" data-field="input" data-idx="${idx}">
+                        <input type="text" value="${escapeHtml(item.input)}" placeholder="投入值 (C社)" data-field="input" data-idx="${idx}">
                     </div>
                     <div class="item-actions">
                         <button class="del" onclick="removeModalRow(${idx})"><i class="fas fa-times"></i></button>
@@ -1538,7 +1272,7 @@
     }
 
     function addModalRow() {
-        modalTempItems.push({ item: '新审核项', benchmark: '', input: '', result: '待比对' });
+        modalTempItems.push({ item: '新审核项', benchmark: '', input: '' });
         renderModalItems();
     }
 
@@ -1551,7 +1285,6 @@
         const mod = moduleData.find(m => m.id === currentEditModuleId);
         if (!mod) return;
         mod.items = modalTempItems;
-        saveModulesToStorage();
         closeModal();
         renderModules();
         if (auditDone) generateResults();
@@ -1573,14 +1306,12 @@
             icon: 'fa-folder',
             items: []
         });
-        saveModulesToStorage();
         renderModules();
     }
 
     function deleteModule(id) {
         if (!confirm(`确定要删除模块 "${moduleData.find(m => m.id === id)?.label}" 吗？`)) return;
         moduleData = moduleData.filter(m => m.id !== id);
-        saveModulesToStorage();
         renderModules();
         if (auditDone) generateResults();
     }
@@ -1588,7 +1319,6 @@
     function resetToDefaultModules() {
         if (!confirm('确定要恢复默认模块配置吗？当前修改将丢失。')) return;
         moduleData = getDefaultModules();
-        saveModulesToStorage();
         renderModules();
         if (auditDone) generateResults();
     }
@@ -1596,10 +1326,8 @@
     // ============================================================
     //  审核执行
     // ============================================================
-    let auditDone = false;
-
     function runAudit() {
-        if (sharedFiles.length === 0) {
+        if (!pdfLoaded) {
             alert('请先上传 PDF 图纸文件');
             return;
         }
@@ -1643,12 +1371,12 @@
         document.getElementById('progressFill').style.width = '0%';
         document.getElementById('progressLabel').textContent = '等待执行';
         document.getElementById('btnRunAudit').disabled = false;
-        renderNonconformance([]);
+        renderDiffs([]);
         renderCompare([]);
     }
 
     // ============================================================
-    //  生成结果
+    //  生成结果 - 只显示基准值 ≠ 投入值的差异项
     // ============================================================
     function generateResults() {
         const allItems = [];
@@ -1662,25 +1390,28 @@
             });
         });
 
-        const diffs = allItems.filter(item => item.result === '不一致');
-        renderNonconformance(diffs);
+        // 差异项：基准值 !== 投入值（严格匹配）
+        const diffs = allItems.filter(item => item.benchmark !== item.input);
+        renderDiffs(diffs);
         renderCompare(allItems);
+        renderModules(); // 更新模块卡片上的差异数量
     }
 
-    function renderNonconformance(diffs) {
-        const tbody = document.getElementById('nonconformanceBody');
+    function renderDiffs(diffs) {
+        const tbody = document.getElementById('diffBody');
         if (diffs.length === 0) {
             tbody.innerHTML = `
                 <tr>
-                    <td colspan="3">
+                    <td colspan="5">
                         <div class="empty-state">
                             <i class="fas fa-check-circle" style="color:#22c55e;"></i>
-                            <p>暂无不符合项，所有审核项目一致</p>
+                            <p>暂无差异项，所有审核项目基准值与投入值一致</p>
                         </div>
                     </td>
                 </tr>
             `;
-            document.getElementById('nonconformanceCount').textContent = '0 项';
+            document.getElementById('diffCount').textContent = '0 项';
+            document.getElementById('diffCount').className = 'badge success';
             return;
         }
 
@@ -1689,13 +1420,16 @@
             html += `
                 <tr>
                     <td class="col-seq">${idx + 1}</td>
-                    <td class="col-category"><span class="tag tag-issue">${d.module}</span></td>
-                    <td class="col-detail">${d.item}: 基准值="${d.benchmark}", 投入值="${d.input}"</td>
+                    <td class="col-module"><span class="tag tag-diff">${d.module}</span></td>
+                    <td class="col-item">${d.item}</td>
+                    <td class="col-benchmark">${d.benchmark || '-'}</td>
+                    <td class="col-input">${d.input || '-'}</td>
                 </tr>
             `;
         });
         tbody.innerHTML = html;
-        document.getElementById('nonconformanceCount').textContent = `${diffs.length} 项`;
+        document.getElementById('diffCount').textContent = `${diffs.length} 项`;
+        document.getElementById('diffCount').className = 'badge danger';
     }
 
     function renderCompare(allItems) {
@@ -1717,14 +1451,15 @@
 
         let html = '';
         allItems.forEach(item => {
-            const resultClass = item.result === '一致' ? 'pass' : 'fail';
-            const resultText = item.result === '一致' ? '✓ 一致' : '✗ 不一致';
+            const isMatch = (item.benchmark === item.input);
+            const resultClass = isMatch ? 'pass' : 'fail';
+            const resultText = isMatch ? '✓ 一致' : '✗ 不一致';
             html += `
                 <tr>
                     <td class="col-module">${item.module}</td>
                     <td class="col-item">${item.item}</td>
-                    <td class="col-benchmark"><span class="benchmark-label">基准</span>${item.benchmark || '-'}</td>
-                    <td class="col-input"><span class="input-label">投入</span>${item.input || '-'}</td>
+                    <td class="col-benchmark"><span class="benchmark-label">基准 (YGT)</span>${item.benchmark || '-'}</td>
+                    <td class="col-input"><span class="input-label">投入 (C社)</span>${item.input || '-'}</td>
                     <td class="col-result"><span class="result-badge ${resultClass}">${resultText}</span></td>
                 </tr>
             `;
@@ -1734,27 +1469,20 @@
     }
 
     // ============================================================
-    //  初始化
+    //  初始化 - 加载基准库数据
     // ============================================================
-    // 加载数据
-    loadFromStorage();
-    loadModulesFromStorage();
-
+    moduleData = getDefaultModules();
     renderModules();
     resetAudit();
-    renderFileList();
-    updateFileBadge();
 
-    // 如果没有文件，添加默认示例
-    if (sharedFiles.length === 0) {
-        addFile('CC2_6.808_YGT_vs_CSOT_PM6810LT1-1.pdf', 'alice');
-    }
-
-    console.log('LCD 图纸审核系统已启动 (数据持久化)');
-    console.log('当前用户:', currentUser);
+    console.log('LCD 图纸审核系统已启动');
+    console.log('基准: YGT V1.0 ｜ 投入: C社 PM6810LT1-1');
     console.log('模块数量:', moduleData.length);
-    console.log('共享文件:', sharedFiles.length);
-    console.log('数据存储: localStorage');
+    const totalItems = moduleData.reduce((sum, m) => sum + (m.items ? m.items.length : 0), 0);
+    console.log('总审核项:', totalItems);
+    const diffItems = moduleData.reduce((sum, m) => sum + (m.items ? m.items.filter(i => i.benchmark !== i.input).length : 0), 0);
+    console.log('预设差异项:', diffItems);
+    console.log('差异判断规则: 基准值 !== 投入值');
 </script>
 
 </body>
